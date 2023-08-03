@@ -1,0 +1,42 @@
+<div class="faqs-section">
+  <div class="container">
+    <h2 class="faqs-title text-center">Frequently Asked Questions</h2>
+    <div class="faqs-description text-center my-5">
+      Frequently asked questions about downloading videos from social networks.
+    </div>
+    <div class="accordion accordion-flush" id="faqs-accordion" style="--bs-accordion-border-color: transparent !important">
+      {% for faq in faqs %} 
+      <div class="accordion-item">
+        <h2 class="accordion-header mb-3" id="faq-heading-{{loop.index}}">
+          <button
+            class="accordion-button collapsed  text-white"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#faq-collapse-{{loop.index}}"
+            aria-expanded="false"
+            aria-controls="faq-collapse-{{loop.index}}"
+            style="background: rgb(64,64,195);
+            background: -moz-linear-gradient(34deg, rgba(64,64,195,1) 1%, rgba(108,65,163,1) 47%, rgba(137,73,181,1) 60%, rgba(97,10,160,1) 100%);
+            background: -webkit-linear-gradient(34deg, rgba(64,64,195,1) 1%, rgba(108,65,163,1) 47%, rgba(137,73,181,1) 60%, rgba(97,10,160,1) 100%);
+            background: linear-gradient(34deg, rgba(64,64,195,1) 1%, rgba(108,65,163,1) 47%, rgba(137,73,181,1) 60%, rgba(97,10,160,1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4040c3',endColorstr='#610aa0',GradientType=1); border-radius: 8px;"
+          >
+            {{faq.question}}
+          </button>
+        </h2>
+        <div
+          id="faq-collapse-{{loop.index}}"
+          class="accordion-collapse collapse"
+          aria-labelledby="faq-heading-{{loop.index}}"
+          data-bs-parent="#faqs-accordion"
+        >
+          <div class="accordion-body" style="color: aliceblue;">
+            {{faq.answer}}
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</div>

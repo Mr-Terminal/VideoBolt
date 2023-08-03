@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VideoBolt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="shortcut icon" href="/static/images/logo.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu:wght@700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@800&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Ubuntu", sans-serif;
+      background-color: #292525;
+      color: aliceblue;
+    }
+
+    /* width */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+
+    .py-5 {
+      padding-top: 10rem !important;
+    }
+
+    .cover {
+      text-align: center;
+      padding: 1rem 2rem;
+      /* border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee; */
+    }
+
+    .title {
+      font-size: 40px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .cover-description {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .cover-button {
+      margin-top: 1rem;
+      padding: 10px 20px;
+      border: none;
+      background: #36d480;
+      color: aliceblue;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+    .cover-button:hover {
+      background-color: #00853e;
+      color: aliceblue;
+    }
+
+    .cover-input {
+      padding: 10px 20px;
+      width: 40%;
+    }
+
+    .thumbnail {
+      width: 400px;
+    }
+
+    .download-format-button {
+      background-color: #36d480;
+      color: white;
+
+      font-weight: 500;
+
+      width: 200px;
+      height: 100px;
+
+      padding: 10px;
+      margin: 10px;
+
+      border: none;
+      border-radius: 8px;
+
+      cursor: pointer;
+    }
+
+    .download-format-button:hover {
+      filter: brightness(0.8);
+    }
+
+    .thumbnail-formats {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .feature-boxes {
+      display: grid;
+      gap: 35px;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media screen and (max-width: 768px) {
+      .feature-boxes {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media screen and (max-width: 576px) {
+      .feature-boxes {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feature-image {
+      width: 200px;
+      height: 200px;
+    }
+
+    .features-title {
+      font-weight: 600;
+      font-size: 32px;
+    }
+
+    .feature-title {
+      font-weight: 600;
+      font-size: 20px;
+    }
+
+    .feature-description {
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    .faqs-section {
+      margin-top: 100px;
+      margin-bottom: 100px;
+    }
+
+    .faqs-title {
+      font-weight: 600;
+      font-size: 32px;
+    }
+
+    .gradient {
+      background: -webkit-linear-gradient(#4040c3, #8949b5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .icon {
+      /* width: 100px;
+      height: 100px; */
+      animation: scroll 40s linear infinite;
+      /* padding: 8px; */
+      margin: 0 10px;
+
+    }
+
+    .slide-track {
+      width: 100%;
+      display: flex;
+      gap: 3em;
+      overflow: hidden;
+    }
+
+    .slider {
+      position: relative;
+      width: auto;
+    }
+
+    .accordion-item{
+      background-color: transparent !important;
+    }
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translatex(-1000%)
+      }
+    }
+  </style>
+</head>
+
+<body>
+  {% include 'components/navbar.html' %}
+  {% block content %} <!--common part-->
+  {% endblock %}
+
+  <script>
+    const myInput = document.getElementById('myInput');
+    const pasteButton = document.getElementById('pasteButton');
+
+
+    pasteButton.addEventListener('click', () => {
+      // Check if the Clipboard API is available in the browser
+      if (navigator.clipboard) {
+        // Use the Clipboard API to read the text from the clipboard
+        navigator.clipboard.readText()
+          .then(text => {
+            // Set the pasted text as the input field value
+            myInput.value = text;
+          })
+          .catch(err => {
+            console.error('Failed to read clipboard contents: ', err);
+          });
+      } else {
+        // If Clipboard API is not available, display an error message
+        alert('Clipboard API not supported in this browser.');
+      }
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

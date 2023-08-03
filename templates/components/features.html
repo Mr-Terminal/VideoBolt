@@ -1,0 +1,27 @@
+<div class="features text-center m-5">
+  <div class="container">
+    <h2 class="features-title p-5" style="font-size: 3rem;">VideoBolt Online Video Downloader</h2>
+    <div class="my-2" style="font-family: 'Poppins',sans-serif;">
+      Download all videos from the internet online with a high-quality MP4/MP3
+      in the VideoBoult video downloader for 100% free, easy-to-use, and
+      unlimited.
+    </div>
+
+    <div class="feature-boxes">
+      {% for feature in features %}
+      <div class="feature p-3">
+        <div class="feature-image-container p-3">
+          <img
+            class="feature-image"
+            src="{{feature.image}}
+              "
+            alt="Feature 1"
+          />
+        </div>
+        <div class="feature-title" style="font-size: 1.5rem; margin-bottom: 10px;">{{feature.title}}</div>
+        <div class="feature-description" style="font-family: 'Poppins',sans-serif;">{{feature.description}}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
