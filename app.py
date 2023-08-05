@@ -13,7 +13,7 @@ def home():
 def cover():
     return render_template("index.html")
 
-@app.route("/download", methods=["POST"])
+@app.route("/download", methods=["GET","POST"])
 def download():
     video_url = request.form["video_url"]
     video_data = extract_video_data_from_url(video_url)
